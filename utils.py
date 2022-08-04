@@ -46,7 +46,6 @@ async def get_pic_base64_by_url(url: str, cookies: Optional[str] = None) -> str:
     async with aiohttp.ClientSession(headers=headers) as session:
         async with session.get(url, proxy=config.proxy) as resp:
             if resp.status == 200:
-                await session.close()
                 return base64.b64encode(await resp.read()).decode()
     return ""
 
