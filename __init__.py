@@ -44,7 +44,7 @@ from .SauceNAO import SauceNAOSearch
 from .Soutubot import SoutubotSearch
 
 reply_img_searcher = on_message("回复搜图", rule=REPLY_SEARCH_RULE, invisible=True, cd=10, priority=3)
-img_searcher = on_command("搜1图", aliases={("识图", "查图", "图片搜索")}, priority=2)
+img_searcher = on_command("搜图", aliases={("识图", "查图", "图片搜索")}, priority=2, cd=10)
 
 
 def arg_parser(args: str) -> Tuple[str, bool, bool]:
