@@ -1,12 +1,12 @@
-import re
-import aiohttp
 import base64
+import re
+from typing import Optional
 
+import aiohttp
+from nonebot.adapters.onebot.v11 import MessageEvent, Bot
+from nonebot.rule import Rule
 from pyquery import PyQuery
 from yarl import URL
-from typing import Optional
-from nonebot.rule import Rule
-from nonebot.adapters.onebot.v11 import MessageEvent, Bot
 
 from .config import config
 
@@ -31,9 +31,9 @@ def extract_first_img_url(event: MessageEvent) -> Optional[str]:
 
 
 async def handle_img(
-    url: str,
-    hide_img: bool,
-    cookies: Optional[str] = None,
+        url: str,
+        hide_img: bool,
+        cookies: Optional[str] = None,
 ) -> str:
     if not hide_img:
         if img_base64 := await get_pic_base64_by_url(url, cookies):

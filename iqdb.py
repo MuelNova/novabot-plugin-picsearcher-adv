@@ -1,10 +1,9 @@
 from typing import List
 
-from aiohttp import ClientSession
 from PicImageSearch import Iqdb, Network
 
-from .utils import get_source, handle_img, shorten_url
 from .config import config
+from .utils import get_source, handle_img, shorten_url
 
 
 async def iqdbSearch(url: str, hide_img: bool) -> List[str]:

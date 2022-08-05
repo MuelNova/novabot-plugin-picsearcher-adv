@@ -1,18 +1,16 @@
 import asyncio
-
-import requests
-
 from dataclasses import dataclass
 from typing import Optional, AnyStr, List, Tuple
+
+import requests
 from bs4 import BeautifulSoup
 from bs4.element import Tag, NavigableString
-
-from playwright.async_api import Page, Browser
 from nonebot import require
 from nonebot.log import logger
 from nonebot_plugin_apscheduler import scheduler
-from playwright._impl._api_types import TimeoutError
 from playwright._impl._api_structures import FilePayload
+from playwright._impl._api_types import TimeoutError
+from playwright.async_api import Page, Browser
 
 from novabot.core import get_firefox_browser
 from .utils import handle_img

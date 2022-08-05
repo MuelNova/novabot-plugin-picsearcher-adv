@@ -23,9 +23,6 @@ Optional Search Arg:
 import re
 from typing import Tuple, List
 
-from novabot import on_message, on_command
-from nonebot.params import CommandArg
-from nonebot.typing import T_State
 from nonebot.adapters.onebot.v11 import (
     Message,
     MessageEvent,
@@ -34,14 +31,17 @@ from nonebot.adapters.onebot.v11 import (
     PrivateMessageEvent,
     GroupMessageEvent
 )
+from nonebot.params import CommandArg
+from nonebot.typing import T_State
 
-from .utils import REPLY_SEARCH_RULE, extract_first_img_url
-from .cache import Cache, exist_in_cache, upsert_cache
+from novabot import on_message, on_command
 from .ASCII2D import ASCII2DSearch
-from .TraceMoe import TraceMoeSearch
-from .iqdb import iqdbSearch
 from .SauceNAO import SauceNAOSearch
 from .Soutubot import SoutubotSearch
+from .TraceMoe import TraceMoeSearch
+from .cache import Cache, exist_in_cache, upsert_cache
+from .iqdb import iqdbSearch
+from .utils import REPLY_SEARCH_RULE, extract_first_img_url
 
 reply_img_searcher = on_message("回复搜图", rule=REPLY_SEARCH_RULE, invisible=True, cd=10, priority=3)
 img_searcher = on_command("搜图", aliases={("识图", "查图", "图片搜索")}, priority=2, cd=10)

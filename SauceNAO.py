@@ -1,5 +1,6 @@
 import re
 from typing import List
+
 from PicImageSearch import SauceNAO, Network
 
 from .ASCII2D import ASCII2DSearch
@@ -29,8 +30,8 @@ async def SauceNAOSearch(url: str, mode: str, hide_img: bool) -> List[str]:
             pixiv_res_list = list(
                 filter(
                     lambda x: x.index_id == saucenao_db["pixiv"]
-                    and x.url
-                    and abs(x.similarity - selected_res.similarity) < 5,
+                              and x.url
+                              and abs(x.similarity - selected_res.similarity) < 5,
                     res.raw,
                 )
             )
