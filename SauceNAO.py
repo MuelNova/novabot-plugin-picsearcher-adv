@@ -15,8 +15,8 @@ async def SauceNAOSearch(url: str, mode: str, hide_img: bool) -> List[str]:
     }
     saucenao = SauceNAO(
         client=Network(proxies=config.proxy),
-        api_key=config.SauceNAO_API_KEY,
-        hide=config.SauceNAO_nsfw_hide_level,
+        api_key=config.saucenao_api_key,
+        hide=config.saucenao_nsfw_hide_level,
         db=saucenao_db[mode],
     )
     res = await saucenao.search(url)
