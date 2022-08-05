@@ -88,7 +88,7 @@ async def img_search(
     md5 = re.search(r'[A-F\d]{32}', url)
     if not md5:
         raise ValueError("URL is not a valid link from `qpic.cn` !")
-    _cache = Cache("novabot-plugin-imgsearch")
+    _cache = Cache("data/novabot-plugin-imgsearch")
     if not purge and (result := exist_in_cache(_cache, f"{md5[0]}_{mode}")):
         return [f"** [Cache] **\n{i}" for i in result]
 

@@ -58,6 +58,7 @@ async def shorten_url(url: str) -> str:
         return f"https://pixiv.net/i/{pid_search.search(url)[1]}"  # type: ignore
     if URL(url).host == "danbooru.donmai.us":
         return url.replace("/post/show/", "/posts/")
+    return url
 
 
 async def get_source(url: str) -> str:
