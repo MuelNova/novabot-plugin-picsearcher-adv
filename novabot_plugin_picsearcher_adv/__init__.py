@@ -18,7 +18,8 @@ Optional Search Arg:
         - `a2d`: ASCII2D
         - `iqdb`: iqdb
     Option:
-        - `purge`: search without cache.
+        - `p`, `purge`: search without cache
+        - `h`, `hide`: hide the result image
 """
 import re
 from typing import Tuple, List
