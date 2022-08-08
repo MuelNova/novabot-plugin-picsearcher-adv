@@ -97,7 +97,7 @@ conda install novabot-plugin-picsearcher-adv
 打开 Nova-Bot 的 `bot.py` 文件, 在其中写入
 
 ```python
-nonebot.load_plugin('novabot_plugin_word-bank')
+nonebot.load_plugin('novabot_plugin_picsearcher_adv')
 ```
 
 </details>
