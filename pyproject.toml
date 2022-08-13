@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "novabot_plugin_picsearcher_adv"
-version = "0.1.0"
+version = "0.1.1"
 description = "Nova-Bot plugin help you to find the source of (Anime) Images."
 authors = ["NovaNo1r <mail@novanoir.dev>"]
 
