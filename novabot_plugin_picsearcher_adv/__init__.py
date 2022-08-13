@@ -23,7 +23,7 @@ Optional Search Arg:
 """
 import re
 from typing import Tuple, List
-
+from nonebot import get_driver
 from nonebot.adapters.onebot.v11 import (
     Message,
     MessageEvent,
@@ -43,6 +43,8 @@ from .TraceMoe import TraceMoeSearch
 from .cache import Cache, exist_in_cache, upsert_cache
 from .iqdb import iqdbSearch
 from .utils import REPLY_SEARCH_RULE, extract_first_img_url
+
+config = get_driver().config
 
 reply_img_searcher = on_message("回复搜图", rule=REPLY_SEARCH_RULE, invisible=True, cd=10, priority=3)
 img_searcher = on_command("搜图", aliases={("识图", "查图", "图片搜索")}, priority=2, cd=10)
@@ -71,13 +73,23 @@ async def _(state: T_State, event: MessageEvent, bot: Bot):
     img = extract_first_img_url(event)
 
     results = await img_search(img, *state['args'])
-    for message in results:
-        message = f"{MessageSegment.reply(id_=event.message_id)}{message}"
-        await bot.send_msg(
-            user_id=event.user_id if isinstance(event, PrivateMessageEvent) else 0,
-            group_id=event.group_id if isinstance(event, GroupMessageEvent) else 0,
-            message=message,
-        )
+    messages = map(lambda x: f"{MessageSegment.reply(id_=event.message_id)}{x}", results)
+
+    await bot.send_forward_msg(
+        user_id=event.user_id if isinstance(event, PrivateMessageEvent) else 0,
+        group_id=event.group_id if isinstance(event, GroupMessageEvent) else 0,
+        messages=[
+            {
+                "type": "node",
+                "data": {
+                    "name": list(config.nickname)[0] if config.nickname else "\u200b",
+                    "uin": bot.self_id,
+                    "content": msg,
+                },
+            }
+            for msg in messages
+        ],
+    )
 
 
 async def img_search(

@@ -6,7 +6,9 @@
 
 
 
+
 <div align="center">
+
 
 
 
@@ -38,6 +40,7 @@ _✨ picsearcher，但是魔改了 ✨_
 
 
 
+
 ```sh
 nb plugin install novabot-plugin-picsearcher-adv
 ```
@@ -50,8 +53,10 @@ nb plugin install novabot-plugin-picsearcher-adv
 
 
 
+
 <details>
 <summary>pip</summary>
+
 
 
 
@@ -66,6 +71,7 @@ pip install novabot-plugin-picsearcher-adv
 
 
 
+
 ```sh
 pdm add novabot-plugin-picsearcher-adv
 ```
@@ -77,6 +83,7 @@ pdm add novabot-plugin-picsearcher-adv
 
 
 
+
 ```sh
 poetry add novabot-plugin-picsearcher-adv
 ```
@@ -85,6 +92,7 @@ poetry add novabot-plugin-picsearcher-adv
 
 <details>
 <summary>conda</summary>
+
 
 
 
@@ -105,6 +113,7 @@ nonebot.load_plugin('novabot_plugin_picsearcher_adv')
 <details>
 <summary>从 github 安装</summary>
 在 Nova-Bot 项目的插件目录下, 打开命令行, 输入以下命令克隆此储存库
+
 
 
 
@@ -140,10 +149,10 @@ nonebot.load_plugin('path.to.novabot.novabot-plugin-picsearcher-adv.novabot_plug
 
 ### 指令表
 
-|    指令    |  权限  | 需要@ |    范围    |     说明     |
-| :--------: | :----: | :---: | :--------: | :----------: |
-|   `搜图`   | 所有人 |  否   | 群聊、私聊 | 打开搜图模式 |
-| *回复图片* | 所有人 |  是   | 群聊、私聊 |   回复搜图   |
+|    指令    |  权限  | 需要@ |    范围    |                             说明                             |
+| :--------: | :----: | :---: | :--------: | :----------------------------------------------------------: |
+|   `搜图`   | 所有人 |  否   | 群聊、私聊 |                         打开搜图模式                         |
+| *回复图片* | 所有人 |  是   | 群聊、私聊 | 回复搜图，回复 BOT 发送的图片时，需要发送 `@bot 再搜 [--optional args]` |
 
 在两个指令的使用中，都可以在消息正文中添加对应的参数来客制化搜图
 
@@ -164,10 +173,8 @@ nonebot.load_plugin('path.to.novabot.novabot-plugin-picsearcher-adv.novabot_plug
 
 > 可能的例子：
 >
-> ​	`搜图 --anime -h`
->
-> ​	`搜图 --pixiv -p -h`
->
-> ​	`[回复图片] @bot --doujin`
-
-
+> 	`搜图 --anime -h`
+> 	
+> 	`搜图 --pixiv -p -h`
+> 	
+> 	`[回复图片] @bot --doujin`

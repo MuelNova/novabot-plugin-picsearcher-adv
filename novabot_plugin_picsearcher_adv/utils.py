@@ -12,7 +12,11 @@ from .config import config
 
 
 async def _is_reply(event: MessageEvent) -> bool:
-    return bool(event.reply)
+    return bool(event.reply
+                and (
+                        event.reply.sender.user_id != event.self_id
+                        or
+                        '再搜' in event.message.extract_plain_text()))
 
 
 async def _has_event_img(event: MessageEvent) -> bool:
