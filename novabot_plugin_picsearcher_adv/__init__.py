@@ -34,8 +34,9 @@ from nonebot.adapters.onebot.v11 import (
 )
 from nonebot.params import CommandArg
 from nonebot.typing import T_State
+from nonebot import on_message, on_command
 
-from novabot import on_message, on_command
+from novabot import Service
 from .ASCII2D import ASCII2DSearch
 from .SauceNAO import SauceNAOSearch
 from .Soutubot import SoutubotSearch
@@ -46,8 +47,11 @@ from .utils import REPLY_SEARCH_RULE, extract_first_img_url
 
 config = get_driver().config
 
-reply_img_searcher = on_message("回复搜图", rule=REPLY_SEARCH_RULE, invisible=True, cd=10, priority=3)
-img_searcher = on_command("搜图", aliases={("识图", "查图", "图片搜索")}, priority=2, cd=10)
+reply_img_searcher = on_message(rule=REPLY_SEARCH_RULE, priority=3)
+img_searcher = on_command("搜图", aliases={("识图", "查图", "图片搜索")}, priority=2)
+
+Service(reply_img_searcher, cd=10)
+Service(img_searcher, cd=10)
 
 
 def arg_parser(args: str) -> Tuple[str, bool, bool]:
@@ -71,7 +75,9 @@ async def _(state: T_State, event: MessageEvent, bot: Bot):
     if 'args' not in state:
         state['args'] = arg_parser(event.message.extract_plain_text())
     img = extract_first_img_url(event)
-
+    if not img:
+        await bot.send(event, "这不是图片!")
+        return
     results = await img_search(img, *state['args'])
     messages = map(lambda x: f"{MessageSegment.reply(id_=event.message_id)}{x}", results)
 
