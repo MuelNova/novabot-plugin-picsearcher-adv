@@ -113,12 +113,12 @@ def parse(html: AnyStr, nums: Optional[int] = None) -> Optional[List[SoutuBotRes
 
     results = []
 
-    if len(tables) < 3:
+    if len(tables) < 2:
         return None
     if not nums or nums >= len(tables):
         nums = len(tables)
     else:
-        nums += 1
+        nums += 2
     for i in tables[2:nums]:
         img = i.find_next("img")
         thumbnail = img.attrs.get('src')
