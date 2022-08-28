@@ -113,13 +113,13 @@ def parse(html: AnyStr, nums: Optional[int] = None) -> Optional[List[SoutuBotRes
 
     results = []
 
-    if len(tables) < 2:
+    if len(tables) < 3:
         return None
     if not nums or nums >= len(tables):
         nums = len(tables)
     else:
         nums += 1
-    for i in tables[1:nums]:
+    for i in tables[2:nums]:
         img = i.find_next("img")
         thumbnail = img.attrs.get('src')
         accuracy = float(str(img.find_next("td").string))
